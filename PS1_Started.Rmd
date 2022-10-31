@@ -2,9 +2,9 @@
 title: 'Problem Set 1:Getting Started Key'
 author: "Claire Duquennois"
 output:
-  pdf_document:
-    number_sections: true
   html_document:
+    number_sections: true
+  pdf_document:
     number_sections: true
 ---
 
@@ -12,11 +12,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 **Group Member 1: Your name here**
-Tory    
+Tory Burford   
 **Group Member 2: Your name here**
-Tesfa
+Tesfa Asefa
 **Group Member 3: Your name here**
-Shreiya
+Shreiya Venkatesan 
 
 
 
@@ -97,7 +97,9 @@ summary(model3)
 
 ```{r key 4}
 ## create sample for the graph
-samp<-sample_n(out, 200)
+install.packages("dplyr")
+library(dplyr)
+samp <- sample_n(out, 200)
 
 plotted<-ggplot(samp, aes(V1, y = value, color = variable)) + 
     geom_point(aes(y = Y, col = "Y"),  alpha=.5) + 
@@ -115,7 +117,9 @@ plotted
 **Load the `cps_clean.csv' dataset (available on Canvas). Regress income on education and interpret the coefficient.  **
 <<<<<<< HEAD
 ```{r}
-cps <- read.csv('cps_clean.csv')
+install.packages("readr")
+library(readr)
+cps <- read_csv('cps_clean.csv')
 ```
 
 
