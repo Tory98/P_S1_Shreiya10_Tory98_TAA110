@@ -96,16 +96,17 @@ summary(model3)
 **The code below generates a scatter plot and regression line for the relationship between $V_1$ and $Y$ as well as $V_1$ and $Y_{adj}$. Submit an improved visualization of this data. Hint: you will need to delete the # to get the code to run **
 
 ```{r key 4}
-#plotted<-ggplot(out, aes(V1, y = value, color = variable)) + 
-#    geom_point(aes(y = Y, col = "Y")) + 
-#    geom_point(aes(y = adjY, col = "adjY"))+
-#    geom_smooth(method='lm', aes(y = Y, col = "Y"))+
-#    geom_smooth(method='lm', aes(y = adjY, col = "Y"))
+samp<-sample_n(out, 200)
 
-#plotted
+plotted<-ggplot(samp, aes(V1, y = value, color = variable)) + 
+    geom_point(aes(y = Y, col = "Y"),  alpha=.5) + 
+    geom_point(aes(y = Y_adj, col = "Y_adj"), alpha=.5)+
+    geom_smooth(method='lm', aes(y = Y, col = "Y"))+
+    geom_smooth(method='lm', aes(y = Y_adj, col = "Y_adj")) + theme_bw() + labs(x="Variable 1", y="Value", title = "Generated Regression Model with Y and Y-adjusted")
 
+plotted
 ```
-**Answer:**
+**Answer: To clean up the graph, we took a sample of 200 from the data set and plotted that sample with the regression lines. This kept the points from cluttering up the graph. We made the points more transparent so that the trend lines would stand out. We also added a title, as well as labels for the X and Y axes.**
 
 
 
@@ -123,14 +124,19 @@ summary(new)
 ```
 
 =======
->>>>>>> cf16c4c1bbf5c1196e7598c0e9979989c7425218
-
-**Answer:**
+**Answer: $\beta_1$=8114.7 This means that for every 1 year increase in education, the regression predicts and increase in income of $8114.7**
 
 
 ## Question: 
 **Add additional control variables to the regression you estimated above. How does this change your interpretation of the coefficient on education?**
-**Answer:**
+
+```{r}
+model3<-lm(inctot~edu+age+female+health, cps)
+summary(model3)
+```
+
+
+**Answer: We added the control variables age, female, and health. With these control variables the new $\beta_1$ for education is 7754.69. This is smaller than our original estimate, suggesting that the control variables were adding a sum upward bias in the original regression.**
 
 # Submission instructions:
 
