@@ -96,6 +96,7 @@ summary(model3)
 **The code below generates a scatter plot and regression line for the relationship between $V_1$ and $Y$ as well as $V_1$ and $Y_{adj}$. Submit an improved visualization of this data. Hint: you will need to delete the # to get the code to run **
 
 ```{r key 4}
+## create sample for the graph
 samp<-sample_n(out, 200)
 
 plotted<-ggplot(samp, aes(V1, y = value, color = variable)) + 
